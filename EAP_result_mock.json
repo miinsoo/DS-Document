@@ -1,0 +1,47 @@
+{
+  "equipment_id": "DS-VIS-001",
+  "timestamp": "2025-07-11T09:32:00.123Z",
+  "lot_id": "LOT-20250711-042",
+  "strip_id": "STRIP-007",
+  "unit_id": "UNIT-0034",
+  "recipe_id": "RCP-BGA-0.5mm",
+  "recipe_version": "v2.1",
+  "operator_id": "ENG-KIM",
+  "overall_result": "FAIL",
+  "fail_reason_code": "CHIPPING_EXCEED",
+  "fail_count": 2,
+  "total_inspected_count": 128,
+  "geometric": {
+    "dimension_w_mm": 10.02,
+    "dimension_l_mm": 10.01,
+    "dimension_h_mm": 1.45,
+    "x_offset_um": 12.5,
+    "y_offset_um": -8.3,
+    "theta_deg": 0.15,
+    "kerf_width_um": 52.3
+  },
+  "bga": {
+    "ball_count_nominal": 256,
+    "ball_count_actual": 256,
+    "ball_diameter_avg_mm": 0.498,
+    "coplanarity_mm": 0.082,
+    "pitch_deviation_um": 4.2,
+    "max_ball_offset_um": 18.7,
+    "avg_ball_offset_um": 6.1
+  },
+  "surface": {
+    "foreign_material_size_um": 0,
+    "scratch_area_mm2": 0.003,
+    "marking_quality_grade": "A"
+  },
+  "singulation": {
+    "chipping_top_um": 35.0,
+    "chipping_bottom_um": 28.5,
+    "burr_height_um": 5.2
+  },
+  "process": {
+    "inspection_duration_ms": 1240,
+    "takt_time_ms": 3850,
+    "algorithm_version": "v4.3.1"
+  }
+}
