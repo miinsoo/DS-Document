@@ -1,0 +1,12 @@
+{
+  "message_id": "550e8400-e29b-41d4-a716-446655440001",
+  "event_type": "STATUS_UPDATE",
+  "timestamp": "2025-07-11T09:31:55.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "lot_id": "LOT-20250711-042",
+  "recipe_id": "RCP-BGA-0.5mm",
+  "recipe_version": "v2.1",
+  "operator_id": "ENG-KIM",
+  "uptime_sec": 14520
+}
