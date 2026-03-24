@@ -1,0 +1,13 @@
+{
+  "message_id": "550e8400-e29b-41d4-a716-446655440004",
+  "event_type": "RECIPE_CHANGED",
+  "timestamp": "2025-07-11T10:17:10.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "IDLE",
+
+  "previous_recipe_id": "RCP-BGA-0.5mm",
+  "previous_recipe_version": "v2.1",
+  "new_recipe_id": "RCP-QFN-0.4mm",
+  "new_recipe_version": "v1.3",
+  "changed_by": "ENG-KIM"
+}
