@@ -1,0 +1,7 @@
+{
+  "_source": "info.log HeartBeatResponse 주기 패턴 | 3초 주기",
+  "message_id": "e7026e09-477c-43c3-8ba5-35b7b7f8a659",
+  "event_type": "HEARTBEAT",
+  "timestamp": "2026-01-22T16:17:10.921Z",
+  "equipment_id": "DS-VIS-001"
+}

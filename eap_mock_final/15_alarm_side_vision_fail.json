@@ -1,0 +1,16 @@
+{
+  "_source": "side.log 27일 ET=52 전수 실패 패턴 — Pass율 48% (정상 96~98%)",
+  "_note": "Carsem_4X6 레시피 Teaching 미완성 신호. 신규 레시피 도입 후 50 Strip 모니터링 로직 트리거",
+  "message_id": "3ab11859-fa87-4248-84bd-72942f2b7b74",
+  "event_type": "HW_ALARM",
+  "timestamp": "2026-01-27T11:42:00.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "alarm_level": "WARNING",
+  "hw_error_code": "VISION_SCORE_ERR",
+  "hw_error_source": "VISION",
+  "hw_error_detail": "SIDE ET=52 fail rate exceeded 50% threshold for 10 consecutive requests (Pass: 48.0%). Recipe Teaching may be incomplete for Carsem_4X6.",
+  "exception_detail": null,
+  "auto_recovery_attempted": false,
+  "requires_manual_intervention": true
+}

@@ -1,0 +1,20 @@
+{
+  "_source": "error.log 27일 20:42:03~04 HALCON#3142 ×20 + lifecycle.log subscribeUnhandledException ×20 1:1 매핑",
+  "_note": "디스크 포화/권한 문제. map.log fps 5.3fps 동반 저하. MapQue 잔여 28개까지 누적",
+  "message_id": "5ea14525-9a60-4436-b22b-c62e38bcfdd8",
+  "event_type": "HW_ALARM",
+  "timestamp": "2026-01-27T20:42:03.808Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "STOP",
+  "alarm_level": "CRITICAL",
+  "hw_error_code": "WRITE_FAIL",
+  "hw_error_source": "VISION",
+  "hw_error_detail": "HALCON error #3142: Cannot open file for writing in operator write_image. Disk full or permission denied. (GVisionWpf.PresentationLayer.Controllers.BaseController.SaveImage)",
+  "exception_detail": {
+    "module": "GVisionWpf.PresentationLayer.Controllers.BaseController",
+    "exception_type": "HOperatorException",
+    "stack_trace_hash": "c9d2e1f0"
+  },
+  "auto_recovery_attempted": false,
+  "requires_manual_intervention": true
+}

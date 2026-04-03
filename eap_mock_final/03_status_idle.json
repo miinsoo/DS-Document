@@ -1,0 +1,13 @@
+{
+  "_source": "info.log [LOT] LOT End 17:39:13 이후 IDLE 전환",
+  "message_id": "05d3415c-7cd1-4ae4-bf6a-5f8ecfdefdcf",
+  "event_type": "STATUS_UPDATE",
+  "timestamp": "2026-01-22T17:39:13.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "IDLE",
+  "lot_id": "LOT-20260122-001",
+  "recipe_id": "Carsem_3X3",
+  "recipe_version": "v1.0",
+  "operator_id": "ENG-KIM",
+  "uptime_sec": 6420
+}

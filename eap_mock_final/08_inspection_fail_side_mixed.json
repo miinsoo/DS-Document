@@ -1,0 +1,83 @@
+{
+  "_source": "side.log 27일 신규 세트 — ET=12(ZA4~7 집중)와 ET=52 혼재, Pass 62.3%",
+  "_note": "ET=52 전수 실패 이전 구간. ZA=4~7에서 ET=12 집중(18~33건). ZA=0~3은 ET=52 위주",
+  "message_id": "6b8ffc31-a1cd-49e0-98ea-a682dfe1b172",
+  "event_type": "INSPECTION_RESULT",
+  "timestamp": "2026-01-27T11:40:00.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "lot_id": "LOT-20260127-001",
+  "strip_id": "STRIP-010",
+  "unit_id": "UNIT-0078",
+  "recipe_id": "Carsem_4X6",
+  "recipe_version": "v1.0",
+  "operator_id": "ENG-KIM",
+  "overall_result": "FAIL",
+  "fail_reason_code": "SIDE_VISION_FAIL",
+  "fail_count": 6,
+  "total_inspected_count": 8,
+  "_side_actual_log": {
+    "_note": "side.log 27일 혼재 패턴 실측. ZA=4~7 ET=12 집중 확인",
+    "ZAxisNum_0": {
+      "InspectionResult": 1,
+      "ErrorType": 1,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    },
+    "ZAxisNum_1": {
+      "InspectionResult": 0,
+      "ErrorType": 52,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    },
+    "ZAxisNum_2": {
+      "InspectionResult": 0,
+      "ErrorType": 52,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    },
+    "ZAxisNum_3": {
+      "InspectionResult": 0,
+      "ErrorType": 52,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    },
+    "ZAxisNum_4": {
+      "InspectionResult": 0,
+      "ErrorType": 12,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    },
+    "ZAxisNum_5": {
+      "InspectionResult": 0,
+      "ErrorType": 12,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    },
+    "ZAxisNum_6": {
+      "InspectionResult": 0,
+      "ErrorType": 12,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    },
+    "ZAxisNum_7": {
+      "InspectionResult": 1,
+      "ErrorType": 1,
+      "XOffset": 0,
+      "YOffset": 0,
+      "TOffset": 0
+    }
+  },
+  "process": {
+    "inspection_duration_ms": 1240,
+    "takt_time_ms": 1620,
+    "algorithm_version": "v4.3.1"
+  }
+}

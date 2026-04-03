@@ -1,0 +1,14 @@
+{
+  "_source": "info.log 23일 11:03:32 Recipe: 446275 직접 추출. 29일 EMAP 181개 이상치와 연관",
+  "_note": "446275 레시피 → EMAP 181개 (정상 46개의 3.93배). 레시피 정체 DS 측 확인 필요",
+  "message_id": "2425cbb0-7e41-4ba1-8602-a1e613b6c833",
+  "event_type": "RECIPE_CHANGED",
+  "timestamp": "2026-01-23T11:03:32.907Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "IDLE",
+  "previous_recipe_id": "ATC_1X1",
+  "previous_recipe_version": "v1.0",
+  "new_recipe_id": "446275",
+  "new_recipe_version": "v1.0",
+  "changed_by": "ENG-KIM"
+}

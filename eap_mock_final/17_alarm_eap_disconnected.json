@@ -1,0 +1,16 @@
+{
+  "_source": "lifecycle.log 전 기간 6회 크래시 (exitApplication 없이 OnStartup) — Will 메시지",
+  "_note": "MQTT Broker가 자동 발행. 대표: 28일 09:44 크래시 (AggregateException 직후)",
+  "message_id": "64e6931a-7e6b-44d9-a808-d32777f3a5c9",
+  "event_type": "HW_ALARM",
+  "timestamp": "2026-01-28T09:44:24.336Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "STOP",
+  "alarm_level": "CRITICAL",
+  "hw_error_code": "EAP_DISCONNECTED",
+  "hw_error_source": "PROCESS",
+  "hw_error_detail": "EAP process terminated unexpectedly.",
+  "exception_detail": null,
+  "auto_recovery_attempted": false,
+  "requires_manual_intervention": true
+}

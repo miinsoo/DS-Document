@@ -1,0 +1,20 @@
+{
+  "_source": {
+    "lot_duration_sec": "info.log LOT Start 16:17:10 → End 17:39:13 직접 계산 = 4,923초",
+    "total_units": "prs.log 22일 실제LOT 349 Req × 8슬롯 = 2,792 (단위 정의 재확인 필요)",
+    "yield_pct": "side.log 22일 Pass율 96.2% 직접 계산 (3,854 / 4,008)",
+    "equipment_status": "info.log LOT End 이후 IDLE 패턴"
+  },
+  "message_id": "9060db98-ad92-452b-a013-9e3b403ef04c",
+  "event_type": "LOT_END",
+  "timestamp": "2026-01-22T17:39:13.646Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "IDLE",
+  "lot_id": "LOT-20260122-001",
+  "lot_status": "COMPLETED",
+  "total_units": 2792,
+  "pass_count": 2687,
+  "fail_count": 105,
+  "yield_pct": 96.2,
+  "lot_duration_sec": 4923
+}

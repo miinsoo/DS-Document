@@ -1,0 +1,16 @@
+{
+  "_source": "info.log 28일 단시간 LOT 패턴 — AggregateException 연속 발생으로 LOT 강제 종료",
+  "_note": "28일 15 Start / 1 End 불균형. LotController.StartNewLot AggregateException 15건 연동",
+  "message_id": "f3058be0-740e-4983-9eab-c0bc3f298a61",
+  "event_type": "LOT_END",
+  "timestamp": "2026-01-28T14:18:38.227Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "IDLE",
+  "lot_id": "LOT-20260128-001",
+  "lot_status": "ABORTED",
+  "total_units": 656,
+  "pass_count": 618,
+  "fail_count": 38,
+  "yield_pct": 94.2,
+  "lot_duration_sec": 2918
+}

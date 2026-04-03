@@ -1,0 +1,20 @@
+{
+  "_source": "error.log 26일~29일 LotController.StartNewLot AggregateException 41건 + lifecycle subscribeUnhandledException 1:1 매핑",
+  "_note": "앱 미종료지만 LOT_END 미발행 가능성. 26일 이후 구조적 버그. LotService.UpdateLotEnd도 29일 추가 감염",
+  "message_id": "1818b223-0103-45cd-9878-f932365a27b0",
+  "event_type": "HW_ALARM",
+  "timestamp": "2026-01-26T10:30:02.716Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "alarm_level": "WARNING",
+  "hw_error_code": "VISION_SCORE_ERR",
+  "hw_error_source": "VISION",
+  "hw_error_detail": "UnobservedTaskException in LotController.StartNewLot(). AggregateException propagated to finalizer thread. LOT_END may not be published. (GVisionWpf.PresentationLayer.Controllers.LotController:StartNewLot)",
+  "exception_detail": {
+    "module": "GVisionWpf.PresentationLayer.Controllers.LotController",
+    "exception_type": "AggregateException",
+    "stack_trace_hash": "f2a3b1c4"
+  },
+  "auto_recovery_attempted": false,
+  "requires_manual_intervention": true
+}

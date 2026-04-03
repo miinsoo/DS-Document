@@ -1,0 +1,20 @@
+{
+  "_source": "error.log 23일 14:32:08 WrongValueException (CameraIlluminator.SetBrightness)",
+  "_note": "SIDE ET=52 급증의 전조 신호. 조명 파라미터 오류 → 측면 검사 품질 저하",
+  "message_id": "a04506f0-945f-4bfa-8471-fda7daa0e67e",
+  "event_type": "HW_ALARM",
+  "timestamp": "2026-01-23T14:32:08.192Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "alarm_level": "WARNING",
+  "hw_error_code": "LIGHT_PWR_LOW",
+  "hw_error_source": "LIGHTING",
+  "hw_error_detail": "Wrong parameter in CameraIlluminator.SetBrightness(). Illumination parameter out of valid range. (GVisionWpf.Cameras.Illuminator.CameraIlluminator:127)",
+  "exception_detail": {
+    "module": "GVisionWpf.Cameras.Illuminator.CameraIlluminator",
+    "exception_type": "WrongValueException",
+    "stack_trace_hash": "d1e4f5a2"
+  },
+  "auto_recovery_attempted": true,
+  "requires_manual_intervention": false
+}

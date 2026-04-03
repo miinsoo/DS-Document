@@ -1,0 +1,14 @@
+{
+  "_source": "info.log 27일 Carsem_4X6 등장 + 16일 Carsem_4X6 최초 확인",
+  "_note": "이 레시피 투입 이후 SIDE ET=52/ET=12 전수 실패 발생. Teaching 미완성 전조",
+  "message_id": "3a646f6f-4700-475b-9c76-4330499d8647",
+  "event_type": "RECIPE_CHANGED",
+  "timestamp": "2026-01-16T11:01:28.600Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "IDLE",
+  "previous_recipe_id": "Carsem_3X3",
+  "previous_recipe_version": "v1.0",
+  "new_recipe_id": "Carsem_4X6",
+  "new_recipe_version": "v1.0",
+  "changed_by": "ENG-KIM"
+}

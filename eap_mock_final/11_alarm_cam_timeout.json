@@ -1,0 +1,20 @@
+{
+  "_source": "error.log OperationCanceledException + map.log cancelPreviousTaskIfNeeded 타임스탬프 1:1 매핑",
+  "_note": "ET=30 연속 3회 이상 발생 시 트리거. GrabLinkGrabber → ImageQueue 경로 확인",
+  "message_id": "995a93ef-a245-47a8-b2c6-e216c9f23d39",
+  "event_type": "HW_ALARM",
+  "timestamp": "2026-01-23T13:22:52.297Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "STOP",
+  "alarm_level": "CRITICAL",
+  "hw_error_code": "CAM_TIMEOUT_ERR",
+  "hw_error_source": "CAMERA",
+  "hw_error_detail": "GrabLinkGrabber failed to dequeue image within timeout. CancellationToken triggered. (GVisionWpf.Cameras.Grabber.GrabLinkGrabber:58 → CameraBase.cs:97)",
+  "exception_detail": {
+    "module": "GVisionWpf.Cameras.Grabber.GrabLinkGrabber",
+    "exception_type": "OperationCanceledException",
+    "stack_trace_hash": "b3f1a2c4"
+  },
+  "auto_recovery_attempted": false,
+  "requires_manual_intervention": true
+}

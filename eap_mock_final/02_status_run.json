@@ -1,0 +1,14 @@
+{
+  "_source": "info.log [LOT] LOT Start 16:17:10 확인 | Recipe: Carsem_3X3 직접 추출",
+  "_uptime": "lifecycle.log OnStartup → 경과 초 추정",
+  "message_id": "f31b70a2-9dd6-4988-a281-68f0d15c16f6",
+  "event_type": "STATUS_UPDATE",
+  "timestamp": "2026-01-22T16:41:41.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "lot_id": "LOT-20260122-001",
+  "recipe_id": "Carsem_3X3",
+  "recipe_version": "v1.0",
+  "operator_id": "ENG-KIM",
+  "uptime_sec": 1528
+}

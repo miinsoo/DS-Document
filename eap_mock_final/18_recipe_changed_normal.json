@@ -1,0 +1,13 @@
+{
+  "_source": "info.log 22일 16:16:19 [Recipe] The Recipe has been changed. Recipe: Carsem_3X3 직접 추출",
+  "message_id": "62e13776-8cc2-4b21-8dd2-2378d558f167",
+  "event_type": "RECIPE_CHANGED",
+  "timestamp": "2026-01-22T16:16:19.033Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "IDLE",
+  "previous_recipe_id": "ATC_1X1",
+  "previous_recipe_version": "v1.0",
+  "new_recipe_id": "Carsem_3X3",
+  "new_recipe_version": "v1.0",
+  "changed_by": "ENG-KIM"
+}

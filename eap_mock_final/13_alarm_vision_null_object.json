@@ -1,0 +1,20 @@
+{
+  "_source": "error.log 23일 11:09 HALCON#4056 + lifecycle.log onDispatcherUnhandledException 타임스탬프 일치",
+  "_note": "앱 미종료. Heartbeat 정상 수신되지만 장비 비정상 상태. Teaching 화면 연속 클릭 패턴",
+  "message_id": "94d75c08-feea-4b40-ac4f-3d61c7f2b228",
+  "event_type": "HW_ALARM",
+  "timestamp": "2026-01-23T11:09:02.651Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "STOP",
+  "alarm_level": "WARNING",
+  "hw_error_code": "VISION_SCORE_ERR",
+  "hw_error_source": "VISION",
+  "hw_error_detail": "HALCON error #4056: object-ID is NULL in operator smallest_rectangle2. Teaching image not acquired before inspection. (GVisionWpf.UIs.ViewModels.Teaching.GridQfnTeachingViewModel:inspectPadAndLeads)",
+  "exception_detail": {
+    "module": "GVisionWpf.UIs.ViewModels.Teaching.GridQfnTeachingViewModel",
+    "exception_type": "HOperatorException",
+    "stack_trace_hash": "a3f9c2e1"
+  },
+  "auto_recovery_attempted": false,
+  "requires_manual_intervention": true
+}
