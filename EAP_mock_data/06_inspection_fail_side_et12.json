@@ -1,0 +1,192 @@
+{
+  "_source": "side.log 21일 15:51 Teaching 직후 — ZAxisNum 0~7 전수 ET=12",
+  "_note": "패키지 치수 설정 미완성. 21일 680건 전수. ET=52와 동일 구조(전수 균등 분포)지만 원인 다름",
+  "message_id": "6fe71569-ff13-4ff0-bae8-2077971fe3fb",
+  "event_type": "INSPECTION_RESULT",
+  "timestamp": "2026-01-21T15:51:07.904Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "lot_id": "LOT-20260121-001",
+  "strip_id": "STRIP-001",
+  "unit_id": "UNIT-0001",
+  "recipe_id": "Carsem_3X3",
+  "recipe_version": "v1.0",
+  "operator_id": "ENG-KIM",
+  "overall_result": "FAIL",
+  "fail_reason_code": "CHIPPING_EXCEED",
+  "fail_count": 8,
+  "total_inspected_count": 8,
+  "inspection_detail": {
+    "prs_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 12,
+        "YOffset": -28,
+        "TOffset": 95
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -15,
+        "YOffset": 35,
+        "TOffset": -140
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 8,
+        "YOffset": -42,
+        "TOffset": 180
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -22,
+        "YOffset": 18,
+        "TOffset": -75
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 28,
+        "YOffset": -5,
+        "TOffset": 120
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -8,
+        "YOffset": 48,
+        "TOffset": -200
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 35,
+        "YOffset": -12,
+        "TOffset": 65
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -18,
+        "YOffset": 22,
+        "TOffset": -155
+      }
+    ],
+    "side_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      }
+    ]
+  },
+  "geometric": {
+    "dimension_w_mm": 10.08,
+    "dimension_l_mm": 9.91,
+    "dimension_h_mm": 1.47,
+    "x_offset_um": 0.0,
+    "y_offset_um": 0.0,
+    "theta_deg": 0.0,
+    "kerf_width_um": 53.2
+  },
+  "bga": {
+    "available": true,
+    "ball_count_nominal": 256,
+    "ball_count_actual": 256,
+    "ball_diameter_avg_mm": 0.499,
+    "coplanarity_mm": 0.078,
+    "pitch_deviation_um": 5.3,
+    "max_ball_offset_um": 19.8,
+    "avg_ball_offset_um": 7.2
+  },
+  "surface": {
+    "foreign_material_size_um": 0,
+    "scratch_area_mm2": 0.004,
+    "marking_quality_grade": "B"
+  },
+  "singulation": {
+    "chipping_top_um": 52.0,
+    "chipping_bottom_um": 48.5,
+    "burr_height_um": 7.5
+  },
+  "process": {
+    "inspection_duration_ms": 1190,
+    "takt_time_ms": 1620,
+    "algorithm_version": "v4.3.1"
+  },
+  "_metadata": {
+    "source": "real_log",
+    "failure_pattern": "ET=12 전수 실패 - 패키지 치수 설정 미완성",
+    "integration_note": "SIDE ET=12 패턴 + Dimension 공차 초과 + Chipping 증가로 역산 (saw_process 제외)"
+  }
+}

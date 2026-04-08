@@ -1,0 +1,192 @@
+{
+  "_source": "prs.log 21일 ET=11 268건 직접 추출 — XOffset/YOffset 유효값 실측",
+  "_note": "ET=11 = 픽업 위치 오프셋 허용치 초과. 오프셋 실측값 있음(패키지 인식 성공, 기준 초과)",
+  "message_id": "7d54ae5c-4c05-4402-8134-23d7b799705f",
+  "event_type": "INSPECTION_RESULT",
+  "timestamp": "2026-01-21T13:55:42.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "lot_id": "LOT-20260121-001",
+  "strip_id": "STRIP-003",
+  "unit_id": "UNIT-0022",
+  "recipe_id": "Carsem_3X3",
+  "recipe_version": "v1.0",
+  "operator_id": "ENG-KIM",
+  "overall_result": "FAIL",
+  "fail_reason_code": "DIMENSION_OUT_OF_SPEC",
+  "fail_count": 3,
+  "total_inspected_count": 8,
+  "inspection_detail": {
+    "prs_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 0,
+        "ErrorType": 11,
+        "XOffset": 73,
+        "YOffset": -130,
+        "TOffset": 166
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 0,
+        "ErrorType": 11,
+        "XOffset": 10,
+        "YOffset": 3,
+        "TOffset": -550
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 28,
+        "YOffset": -40,
+        "TOffset": 88
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -12,
+        "YOffset": 55,
+        "TOffset": -200
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 0,
+        "ErrorType": 11,
+        "XOffset": 102,
+        "YOffset": -50,
+        "TOffset": 143
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 45,
+        "YOffset": -20,
+        "TOffset": 310
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -8,
+        "YOffset": 67,
+        "TOffset": -450
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 31,
+        "YOffset": -88,
+        "TOffset": 95
+      }
+    ],
+    "side_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      }
+    ]
+  },
+  "geometric": {
+    "dimension_w_mm": 10.02,
+    "dimension_l_mm": 10.01,
+    "dimension_h_mm": 1.44,
+    "x_offset_um": 102.0,
+    "y_offset_um": -130.0,
+    "theta_deg": -0.55,
+    "kerf_width_um": 51.5
+  },
+  "bga": {
+    "available": true,
+    "ball_count_nominal": 256,
+    "ball_count_actual": 256,
+    "ball_diameter_avg_mm": 0.497,
+    "coplanarity_mm": 0.072,
+    "pitch_deviation_um": 5.8,
+    "max_ball_offset_um": 21.2,
+    "avg_ball_offset_um": 8.3
+  },
+  "surface": {
+    "foreign_material_size_um": 0,
+    "scratch_area_mm2": 0.005,
+    "marking_quality_grade": "A"
+  },
+  "singulation": {
+    "chipping_top_um": 30.0,
+    "chipping_bottom_um": 25.5,
+    "burr_height_um": 5.8
+  },
+  "process": {
+    "inspection_duration_ms": 1190,
+    "takt_time_ms": 1600,
+    "algorithm_version": "v4.3.1"
+  },
+  "_metadata": {
+    "source": "real_log",
+    "failure_pattern": "ET=11 PRS Offset 초과 - 3/8 개 FAIL",
+    "integration_note": "실제 PRS Offset 값(XOffset=102, YOffset=-130) 반영 (saw_process 제외)"
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "_source": "side.log 27일 신규 세트 — ET=12(ZA4~7 집중)와 ET=52 혼재, Pass 62.3%",
+  "_note": "ET=52 전수 실패 이전 구간. ZA=4~7에서 ET=12 집중(18~33건). ZA=0~3은 ET=52 위주",
+  "message_id": "6b8ffc31-a1cd-49e0-98ea-a682dfe1b172",
+  "event_type": "INSPECTION_RESULT",
+  "timestamp": "2026-01-27T11:40:00.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "lot_id": "LOT-20260127-001",
+  "strip_id": "STRIP-010",
+  "unit_id": "UNIT-0078",
+  "recipe_id": "Carsem_4X6",
+  "recipe_version": "v1.0",
+  "operator_id": "ENG-KIM",
+  "overall_result": "FAIL",
+  "fail_reason_code": "SIDE_VISION_FAIL",
+  "fail_count": 6,
+  "total_inspected_count": 8,
+  "inspection_detail": {
+    "prs_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 18,
+        "YOffset": -25,
+        "TOffset": 110
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -12,
+        "YOffset": 38,
+        "TOffset": -165
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 25,
+        "YOffset": -15,
+        "TOffset": 90
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -8,
+        "YOffset": 42,
+        "TOffset": -135
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 32,
+        "YOffset": -20,
+        "TOffset": 125
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -15,
+        "YOffset": 48,
+        "TOffset": -180
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 22,
+        "YOffset": -32,
+        "TOffset": 95
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -18,
+        "YOffset": 28,
+        "TOffset": -145
+      }
+    ],
+    "side_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 0,
+        "ErrorType": 12,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      }
+    ]
+  },
+  "geometric": {
+    "dimension_w_mm": 10.06,
+    "dimension_l_mm": 9.95,
+    "dimension_h_mm": 1.46,
+    "x_offset_um": 0.0,
+    "y_offset_um": 0.0,
+    "theta_deg": 0.0,
+    "kerf_width_um": 52.8
+  },
+  "bga": {
+    "available": true,
+    "ball_count_nominal": 256,
+    "ball_count_actual": 256,
+    "ball_diameter_avg_mm": 0.498,
+    "coplanarity_mm": 0.095,
+    "pitch_deviation_um": 6.2,
+    "max_ball_offset_um": 22.5,
+    "avg_ball_offset_um": 8.8
+  },
+  "surface": {
+    "foreign_material_size_um": 15.2,
+    "scratch_area_mm2": 0.006,
+    "marking_quality_grade": "B"
+  },
+  "singulation": {
+    "chipping_top_um": 45.0,
+    "chipping_bottom_um": 38.5,
+    "burr_height_um": 7.2
+  },
+  "process": {
+    "inspection_duration_ms": 1240,
+    "takt_time_ms": 1620,
+    "algorithm_version": "v4.3.1"
+  },
+  "_metadata": {
+    "source": "real_log",
+    "failure_pattern": "ET=12/ET=52 혼재 - ZA4~7에 ET=12 집중, ZA1~3에 ET=52",
+    "integration_note": "Teaching 미완성 전조 신호 - 혼재 패턴 반영 (saw_process 제외)"
+  }
+}

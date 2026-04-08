@@ -1,0 +1,192 @@
+{
+  "_source": "side.log 27일 11:36:51 첫 Request 직접 추출 — ZAxisNum 0~7 전수 ET=52",
+  "_note": "Carsem_4X6 레시피 Teaching 미완성으로 발생. 27일 1,253건 동일 패턴. XOffset=0 → 패키지 인식했으나 알고리즘 판정 탈락",
+  "message_id": "acc17ae8-6521-4bb6-a745-deffbff0c4fd",
+  "event_type": "INSPECTION_RESULT",
+  "timestamp": "2026-01-27T11:36:52.000Z",
+  "equipment_id": "DS-VIS-001",
+  "equipment_status": "RUN",
+  "lot_id": "LOT-20260127-001",
+  "strip_id": "STRIP-001",
+  "unit_id": "UNIT-0001",
+  "recipe_id": "Carsem_4X6",
+  "recipe_version": "v1.0",
+  "operator_id": "ENG-KIM",
+  "overall_result": "FAIL",
+  "fail_reason_code": "SIDE_VISION_FAIL",
+  "fail_count": 8,
+  "total_inspected_count": 8,
+  "inspection_detail": {
+    "prs_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 15,
+        "YOffset": -32,
+        "TOffset": 88
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -8,
+        "YOffset": 45,
+        "TOffset": -120
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 22,
+        "YOffset": -18,
+        "TOffset": 200
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -33,
+        "YOffset": 28,
+        "TOffset": -95
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 5,
+        "YOffset": -55,
+        "TOffset": 140
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 40,
+        "YOffset": 12,
+        "TOffset": -220
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": -18,
+        "YOffset": -40,
+        "TOffset": 75
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 1,
+        "ErrorType": 1,
+        "XOffset": 28,
+        "YOffset": 22,
+        "TOffset": -160
+      }
+    ],
+    "side_result": [
+      {
+        "ZAxisNum": 0,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 1,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 2,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 3,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 4,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 5,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 6,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      },
+      {
+        "ZAxisNum": 7,
+        "InspectionResult": 0,
+        "ErrorType": 52,
+        "XOffset": 0,
+        "YOffset": 0,
+        "TOffset": 0
+      }
+    ]
+  },
+  "geometric": {
+    "dimension_w_mm": 10.01,
+    "dimension_l_mm": 9.99,
+    "dimension_h_mm": 1.46,
+    "x_offset_um": 0.0,
+    "y_offset_um": 0.0,
+    "theta_deg": 0.0,
+    "kerf_width_um": 51.8
+  },
+  "bga": {
+    "available": true,
+    "ball_count_nominal": 256,
+    "ball_count_actual": 256,
+    "ball_diameter_avg_mm": 0.497,
+    "coplanarity_mm": 0.122,
+    "pitch_deviation_um": 6.8,
+    "max_ball_offset_um": 24.3,
+    "avg_ball_offset_um": 9.5
+  },
+  "surface": {
+    "foreign_material_size_um": 28.5,
+    "scratch_area_mm2": 0.008,
+    "marking_quality_grade": "C"
+  },
+  "singulation": {
+    "chipping_top_um": 32.0,
+    "chipping_bottom_um": 26.5,
+    "burr_height_um": 6.8
+  },
+  "process": {
+    "inspection_duration_ms": 1240,
+    "takt_time_ms": 1620,
+    "algorithm_version": "v4.3.1"
+  },
+  "_metadata": {
+    "source": "real_log",
+    "failure_pattern": "ET=52 전수 실패 - Teaching 미완성 신호",
+    "integration_note": "SIDE ET=52 패턴 + Coplanarity 초과로 역산 (saw_process 제외)"
+  }
+}
