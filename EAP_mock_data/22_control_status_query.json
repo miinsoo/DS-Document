@@ -1,0 +1,11 @@
+{
+  "_source": "CONTROL_CMD 명세 §8 기반 — 모바일 앱 상태 즉시 조회 명령 Mock",
+  "_note": "STATUS_QUERY: 모바일 앱 허용 읽기 전용 명령. 즉시 STATUS_UPDATE 발행 요청. Heartbeat 정상이지만 장비 상태 불확실할 때 사용.",
+  "message_id": "7f3a1200-ctrl-4abc-b100-000000000022",
+  "event_type": "CONTROL_CMD",
+  "timestamp": "2026-01-23T13:25:00.000Z",
+  "command": "STATUS_QUERY",
+  "issued_by": "MOBILE_APP",
+  "reason": "VISION_SCORE_ERR 알람 후 장비 운영 상태 즉시 확인 요청",
+  "target_lot_id": null
+}

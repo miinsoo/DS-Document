@@ -1,0 +1,21 @@
+{
+  "_source": "ORACLE_ANALYSIS 명세 §9 기반 — Carsem_3X3 정상 LOT 2차 검증 결과 Mock",
+  "_note": "NORMAL 판정: 28 LOT 학습 기반 동적 임계값 정상 범위 내. Carsem_3X3 주력 양산 레시피. LOT_END 수신 후 비동기 발행.",
+  "message_id": "a1b2c3d4-e5f6-7890-abcd-ef1234560023",
+  "event_type": "ORACLE_ANALYSIS",
+  "timestamp": "2026-01-22T17:42:15.456Z",
+  "equipment_id": "DS-VIS-001",
+  "lot_id": "LOT-20260122-001",
+  "recipe_id": "Carsem_3X3",
+  "judgment": "NORMAL",
+  "yield_status": {
+    "actual": 96.2,
+    "dynamic_threshold": {
+      "normal_min": 94.9,
+      "normal_max": 98.7
+    },
+    "lot_basis": 28
+  },
+  "ai_comment": "28 LOT 학습 기준 정상 범위 [94.9%, 98.7%] 내. 수율 96.2% 안정. 추세 이상 없음.",
+  "threshold_proposal": null
+}

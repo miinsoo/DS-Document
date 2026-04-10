@@ -1,0 +1,11 @@
+{
+  "_source": "CONTROL_CMD 명세 §8 기반 — 모바일 앱 긴급 정지 명령 Mock",
+  "_note": "EMERGENCY_STOP: 모바일 앱 허용 긴급 명령. SIDE Pass율 48% CRITICAL 알람 수신 후 오퍼레이터가 즉시 생산 중단 요청. 진행 중 Lot 강제 중단 및 equipment_status=STOP 전환 유발.",
+  "message_id": "7f3a1200-ctrl-4abc-b100-000000000021",
+  "event_type": "CONTROL_CMD",
+  "timestamp": "2026-01-27T12:25:00.000Z",
+  "command": "EMERGENCY_STOP",
+  "issued_by": "MOBILE_APP",
+  "reason": "VISION_SCORE_ERR 수신 — SIDE ET=52 Fail율 48% CRITICAL. 즉시 생산 중단 요청",
+  "target_lot_id": "LOT-20260127-003"
+}

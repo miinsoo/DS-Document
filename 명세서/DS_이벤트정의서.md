@@ -101,7 +101,7 @@ Carsem 현장 실가동 로그 기반 Mock 데이터 20종 전수 분석
 
 > **C-1. 유닛 검사 정상 통과**  
 > 8슬롯 전체 ET=1(정상). PRS XOffset 범위 -25~121 / YOffset -94~143 (±300 이내). SIDE XOffset/YOffset/TOffset 항상 0. chipping_top=22μm / blade_wear=0.31 (정상 마모 구간).  
-> 근거 파일: `04_inspection_result_pass.json`
+> 근거 파일: `04_inspection_pass.json`
 
 **판정 기준**
 * **PASS 조건:** overall_result=PASS AND fail_count=0
@@ -123,7 +123,7 @@ Carsem 현장 실가동 로그 기반 Mock 데이터 20종 전수 분석
 * **C-2 단순 FAIL:** side_slots 내 error_type=52 슬롯 수 ≥ 1 → fail_reason_code=SIDE_VISION_FAIL
 * **C-2 전수 FAIL(CRITICAL):** side_slots 전 슬롯(8개) error_type=52 → Teaching 미완성 강력 의심
 * **C-2 Pass율 경보:** SIDE Pass율 < 90% → WARNING / Pass율 < 50% → CRITICAL (Teaching 미완성 확정)
-* 연속 10 Request 동안 ET=52 Fail율 > 50% 지속 → RECIPE_TEACHING_INCOMPLETE 알람 발행
+* 연속 10 Request 동안 ET=52 Fail율 > 50% 지속 → VISION_SCORE_ERR 알람 발행 (hw_error_detail: "SIDE ET=52 fail rate exceeded 50%")
 * **조치:** 해당 레시피 Teaching 재수행 전 생산 중단 권고
 
 ### C-3. 유닛 불량 — SIDE ET=12 (칩핑 기준 초과)
@@ -179,20 +179,20 @@ Carsem 현장 실가동 로그 기반 Mock 데이터 20종 전수 분석
 
 **판정 기준**
 * **트리거:** lot_status=ABORTED
-* **조치:** 중단 원인 파악 — HW_ALARM 이력 확인 (16번 LOT_END_MISSING 알람과 연계)
+* **조치:** 중단 원인 파악 — HW_ALARM 이력 확인 (16번 VISION_SCORE_ERR/LotController 알람과 연계)
 * **재투입 가능 조건:** 중단 원인 해소 + 수율 기준 충족 + 레시피 Teaching 완료 확인
 * MES 연동: ABORTED Lot의 partial 데이터는 Historian에 별도 태그 저장 권장
 
-### D-3. Lot End 누락 감지 (LOT_END_MISSING)
+### D-3. Lot End 누락 감지 (VISION_SCORE_ERR / LotController)
 
 > **D-3. LOT_END 미발행 감지**  
 > LotController.StartNewLot에서 AggregateException 발생 시 LOT_END가 발행되지 않을 수 있음. 실측: 26일 이후 Start 누적 > End 누적 불균형 심화(28일 15 Start / 1 End). 앱은 종료되지 않아 Heartbeat는 정상 수신.  
-> 근거 파일: `16_alarm_lot_end_missing.json`
+> 근거 파일: `16_alarm_lot_start_fail.json`
 
 **판정 기준**
 * **트리거 로직:** LOT_START 이벤트 후 (정상 최대 소요시간 + 여유시간) 초과 시 LOT_END 미수신
-* 실측 기준: 정상 Lot 최대 370분 → 400분(24,000s) 이내 LOT_END 미수신 시 LOT_END_MISSING 발행
-* 보조 감지: HW_ALARM(hw_error_code=LOT_END_MISSING) 수신 즉시 — MES Start/End 카운트 불균형 확인
+* 실측 기준: 정상 Lot 최대 370분 → 400분(24,000s) 이내 LOT_END 미수신 시 VISION_SCORE_ERR 발행
+* 보조 감지: HW_ALARM(hw_error_code=VISION_SCORE_ERR, hw_error_detail 키워드: "LotController.StartNewLot") 수신 즉시 — MES Start/End 카운트 불균형 확인
 * **조치:** EAP 재시작 또는 수동 LOT_END 처리 필요
 
 ---
@@ -225,42 +225,42 @@ Carsem 현장 실가동 로그 기반 Mock 데이터 20종 전수 분석
 * **조치:** 디스크 여유 공간 확인 / 이미지 저장 경로 권한 확인 / 불필요 이미지 파일 정리
 * 연쇄 영향: WRITE_FAIL 지속 시 LOT_END 미발행 가능성 → D-3 로직 함께 모니터링
 
-### E-3. 비전 NULL 객체 (VISION_NULL_OBJ)
+### E-3. 비전 NULL 객체 (VISION_SCORE_ERR)
 
 > **E-3. Teaching 이미지 미획득 — NULL 객체 참조**  
 > HALCON #4056 — smallest_rectangle2 연산자에서 객체 ID NULL. Teaching 이미지 획득 전 검사 실행 시 발생. 앱 미종료(Heartbeat 정상 수신)지만 비전 검사 불가 상태. 실측: 23일 16건 연속 — Teaching 화면 연속 클릭 패턴.  
 > 근거 파일: `13_alarm_vision_null_object.json`
 
 **판정 기준**
-* **트리거:** hw_error_code=VISION_NULL_OBJ AND alarm_level=WARNING
+* **트리거:** hw_error_code=VISION_SCORE_ERR AND alarm_level=WARNING AND hw_error_detail 키워드: "HALCON error #4056" / "NULL in smallest_rectangle2"
 * 주의: Heartbeat 정상 수신 중에도 장비 비정상 — 모바일 앱에서 별도 상태 표시 필요
 * 선행 조건: Teaching 미완료 상태에서 검사 실행 시도 → 레시피 전환 직후 집중 모니터링
 * **조치:** 해당 레시피 Teaching 재수행 필수. auto_recovery_attempted=false → 수동 처리
 * 연쇄 위험: 반복 발생 시 onDispatcherUnhandledException → 앱 강제 종료 가능
 
-### E-4. 조명 파라미터 오류 (LIGHT_PARAM_ERR)
+### E-4. 조명 파라미터 오류 (LIGHT_PWR_LOW)
 
 > **E-4. 조명 파라미터 유효 범위 이탈**  
 > CameraIlluminator.SetBrightness에서 WrongValueException. 조명 파라미터 유효 범위 이탈. equipment_status=RUN 유지(검사 중단 없음). auto_recovery_attempted=true — 자동 복구 시도. 실측: SIDE ET=52 급증의 전조 신호 패턴 확인.  
 > 근거 파일: `14_alarm_light_param_err.json`
 
 **판정 기준**
-* **트리거:** hw_error_code=LIGHT_PARAM_ERR AND alarm_level=WARNING
+* **트리거:** hw_error_code=LIGHT_PWR_LOW AND alarm_level=WARNING
 * 자동 복구: auto_recovery_attempted=true → 일정 시간 후 복구 여부 재확인
-* 전조 패턴: LIGHT_PARAM_ERR 발생 후 SIDE Pass율 하락 감지 시 → SIDE 검사 품질 저하 연동
-* Oracle 연동: LIGHT_PARAM_ERR 발생 이후 50 Strip 동안 SIDE ET=52 비율 모니터링
+* 전조 패턴: LIGHT_PWR_LOW 발생 후 SIDE Pass율 하락 감지 시 → SIDE 검사 품질 저하 연동
+* Oracle 연동: LIGHT_PWR_LOW 발생 이후 50 Strip 동안 SIDE ET=52 비율 모니터링
 * **조치:** 복구 실패(동일 알람 재발) 시 수동 조명 파라미터 재설정 필요
 
-### E-5. Teaching 미완성 경보 (RECIPE_TEACHING_INCOMPLETE)
+### E-5. Teaching 미완성 경보 (VISION_SCORE_ERR)
 
 > **E-5. 신규 레시피 Teaching 미완성 감지**  
 > 신규 레시피 투입 후 50 Strip 모니터링 로직 트리거. SIDE ET=52 Fail율 48% (정상 96~98%). 연속 10 Request Fail율 > 50% 지속 시 발행. equipment_status=RUN 유지. 실측: Carsem_4X6 투입 직후 즉시 발생.  
-> 근거 파일: `15_alarm_recipe_teaching_incomplete.json`
+> 근거 파일: `15_alarm_side_vision_fail.json`
 
 **판정 기준**
 * **트리거 로직:** RECIPE_CHANGED 수신 후 50 Strip(= 400 슬롯) 동안 SIDE ET=52/12 Fail율 모니터링
 * WARNING 기준: SIDE Fail율 > 30% 지속 (10 Request 연속)
-* CRITICAL 기준: SIDE Fail율 > 50% 지속 (10 Request 연속) → RECIPE_TEACHING_INCOMPLETE 발행
+* CRITICAL 기준: SIDE Fail율 > 50% 지속 (10 Request 연속) → VISION_SCORE_ERR 발행 (hw_error_detail: "SIDE ET=52 fail rate exceeded 50%")
 * 정상 종료: 50 Strip 이내 Fail율 < 10% 안정화 시 모니터링 종료
 * **조치:** 신규 레시피 Teaching 완료 확인 후 양산 재개. 완료 전 생산 중단 권고
 
@@ -319,10 +319,23 @@ Carsem 현장 실가동 로그 기반 Mock 데이터 20종 전수 분석
 | R21 | MapQue 잔여 수 | 0개 | 15~30개 | > 30개 | 12 |
 | R22 | takt_time_ms (정상) | < 2,000ms | 2,000~3,000ms | > 3,000ms | 04~08 |
 | R23 | yield_pct | ≥ 95% | 90~95% | < 90% | 09,10 |
-| R24 | lot_duration_sec | < 24,000s (400분) | — | > 24,000s (LOT_END_MISSING) | 09,10,16 |
+| R24 | lot_duration_sec | < 24,000s (400분) | — | > 24,000s → VISION_SCORE_ERR 발행 | 09,10,16 |
 | R25 | LOT Start/End 불균형 | 0 차이 | 1~3 차이 누적 | ≥ 5 차이 누적 | 16 |
 | R26 | CAM_TIMEOUT_ERR 발생 | 0건/일 | 1~2건/일 | > 3건/일 | 11 |
 | R27 | WRITE_FAIL 발생 | 0건 | 1건 이상 | 연속 5건 이상 | 12 |
+| R28 | VISION_SCORE_ERR (NULL, #4056) | 0건 | 산발 발생 | 연속 10건 이상 | 13 |
+| R29 | LIGHT_PWR_LOW 발생 | 0건 | 1건 | 연속 3건 이상 | 14 |
+| R30 | 신규 레시피 Fail율 | < 10% | 10~30% | > 30% 지속 (50 Strip) | 15,19 |
+| R31 | 숫자형 레시피 ID | 문자형 ID | — | 숫자형 (446275 등) | 20 |
+| R32 | EMAP 크기 | ≤ 100개 | 100~150개 | > 150개 | 20 |
+| R33 | AggregateException | 0건 | 1~5건/일 | > 5건/일 | 16 |
+| R34 | EAP_DISCONNECTED | 0건 | 1건/주 | > 2건/주 | 17 |
+| R35 | 동일 레시피 ABORTED | 0회 | 1회 | ≥ 2회 연속 | 10 |
+| R36 | blade_usage_count | < 20,000회 | 20,000~25,000회 | > 25,000회 | 04~08 |
+| R37 | inspection_duration_ms | < 1,500ms | 1,500~2,000ms | > 2,000ms | 04~08 |
+| R38a | Isolation Forest 점수 | < 0.5 | 0.5~0.85 | > 0.85 | Oracle |
+| R38b | EWMA 이탈 | μ±2σ 이내 | 2σ~3σ 초과 | 3σ 초과 | Oracle |
+| R38c | status 비정상 전환 | 정상 패턴 | — | RUN→STOP 무경고 전환 | 02,03 |
 
 ---
 
@@ -418,12 +431,39 @@ LOT_END → Oracle 서버 Subscribe
     "dynamic_threshold": { "warning_min": 65.0, "warning_max": 70.0 },
     "lot_basis": 8 
   }, 
+  "isolation_forest_score": 0.61,
   "ai_comment": "8 LOT 분석 결과 정상 범위 [65~72%]. 현재 68.5% 경계 근접.", 
   "threshold_proposal": { 
     "metric": "yield_pct", 
     "current_warning": 90.0, 
     "proposed_warning": 65.0, 
     "basis": "8 LOT 기반 동적 계산 (EWMA 평균 68.2%, 표준편차 4.1%)" 
+  } 
+}
+```
+
+**ORACLE_ANALYSIS 이벤트 예시 (DANGER 판정 + 즉시 중단 권고):**
+```json
+{ 
+  "message_id": "c3d4e5f6-ora-8901-bcde-f01234560025", 
+  "event_type": "ORACLE_ANALYSIS",
+  "timestamp": "2026-01-29T09:22:18.789Z", 
+  "equipment_id": "DS-VIS-001", 
+  "lot_id": "LOT-20260129-001", 
+  "recipe_id": "Carsem_4X6", 
+  "judgment": "DANGER", 
+  "yield_status": { 
+    "actual": 58.3, 
+    "dynamic_threshold": { "danger_threshold": 60.0, "warning_min": 65.0 },
+    "lot_basis": 12 
+  }, 
+  "isolation_forest_score": 0.91,
+  "ai_comment": "12 LOT 분석 DANGER 구간. 수율 58.3%로 3σ 이탈. 이상 점수 0.91 초과. 즉시 생산 중단 및 Teaching 재수행 필수.",
+  "threshold_proposal": { 
+    "metric": "yield_pct", 
+    "current_critical": 80.0, 
+    "proposed_critical": 62.0, 
+    "basis": "12 LOT 기반 (EWMA 평균 65.1%, 표준편차 4.8%)" 
   } 
 }
 ```
@@ -437,7 +477,7 @@ LOT_END → Oracle 서버 Subscribe
 | 01_heartbeat | HEARTBEAT | A-1 | 3 초 주기 |
 | 02_status_run | STATUS_UPDATE | B-1 | RUN / Carsem_3X3 / uptime 1528s |
 | 03_status_idle | STATUS_UPDATE | B-2 | IDLE / uptime 6420s |
-| 04_inspection_result_pass | INSPECTION_RESULT | C-1 | PASS / ET=1 전체 / blade_wear 0.31 |
+| 04_inspection_pass | INSPECTION_RESULT | C-1 | PASS / ET=1 전체 / blade_wear 0.31 |
 | 05_inspection_fail_side_et52 | INSPECTION_RESULT | C-2 | FAIL / ET=52 8/8 / Carsem_4X6 |
 | 06_inspection_fail_side_et12 | INSPECTION_RESULT | C-3 | FAIL / ET=12 8/8 / chipping 65.2μm |
 | 07_inspection_fail_prs_offset | INSPECTION_RESULT | C-4 | FAIL / ET=11 3/8 / x_offset 102 |
@@ -446,11 +486,16 @@ LOT_END → Oracle 서버 Subscribe
 | 10_lot_end_aborted | LOT_END | D-2 | ABORTED / 94.2% / 656 units |
 | 11_alarm_cam_timeout | HW_ALARM | E-1 | CRITICAL / CAM_TIMEOUT_ERR / STOP |
 | 12_alarm_write_image_fail | HW_ALARM | E-2 | CRITICAL / WRITE_FAIL / HALCON#3142 |
-| 13_alarm_vision_null_object | HW_ALARM | E-3 | WARNING / VISION_NULL_OBJ / HALCON#4056 |
-| 14_alarm_light_param_err | HW_ALARM | E-4 | WARNING / LIGHT_PARAM_ERR / 자동복구 |
-| 15_alarm_recipe_teaching_inc | HW_ALARM | E-5 | WARNING / RECIPE_TEACHING_INCOMPLETE |
-| 16_alarm_lot_end_missing | HW_ALARM | D-3 | WARNING / LOT_END_MISSING / AggEx |
+| 13_alarm_vision_null_object | HW_ALARM | E-3 | WARNING / VISION_SCORE_ERR (NULL객체, #4056) |
+| 14_alarm_light_param_err | HW_ALARM | E-4 | WARNING / LIGHT_PWR_LOW / 자동복구 |
+| 15_alarm_side_vision_fail | HW_ALARM | E-5 | WARNING / VISION_SCORE_ERR (ET=52 Fail율 48%) |
+| 16_alarm_lot_start_fail | HW_ALARM | D-3 | WARNING / VISION_SCORE_ERR (AggEx/LotController) |
 | 17_alarm_eap_disconnected | HW_ALARM | A-2 | CRITICAL / EAP_DISCONNECTED / Will |
 | 18_recipe_changed_normal | RECIPE_CHANGED | F-1 | ATC_1X1 → Carsem_3X3 |
 | 19_recipe_changed_new_4x6 | RECIPE_CHANGED | F-2 | Carsem_3X3 → Carsem_4X6 (신규) |
 | 20_recipe_changed_446275 | RECIPE_CHANGED | F-2 | ATC_1X1 → 446275 (숫자형 ID) |
+| 21_control_emergency_stop | CONTROL_CMD | §8 | EMERGENCY_STOP / MOBILE_APP / 긴급 정지 |
+| 22_control_status_query | CONTROL_CMD | §8 | STATUS_QUERY / MOBILE_APP / 즉시 상태 조회 |
+| 23_oracle_normal | ORACLE_ANALYSIS | §9 | NORMAL / Carsem_3X3 / 96.2% / 28 LOT |
+| 24_oracle_warning | ORACLE_ANALYSIS | §9 | WARNING / Carsem_4X6 / 68.5% / 8 LOT |
+| 25_oracle_danger | ORACLE_ANALYSIS | §9 | DANGER / Carsem_4X6 / 58.3% / 12 LOT |
