@@ -1,0 +1,76 @@
+{
+  "_purpose": "N=4 동시 시나리오 — 모바일 N:1 타일 대시보드 검증용",
+  "_synthetic": true,
+  "_note": "기존 Mock 01~25를 equipment_id만 치환하여 4 토픽 트리에 동시 발행. 시뮬레이터가 이 파일을 읽어 routing.",
+  "scenario_id": "MULTI-4X-001",
+  "scenario_name": "4대 장비 동시 운영 — 정상/이상/대기/STOP 혼합",
+  "duration_sec": 600,
+  "concurrent_alarms": true,
+  "equipments": [
+    {
+      "equipment_id": "DS-VIS-001",
+      "display_name": "비전 #1 (정상 양산)",
+      "site": "Carsem-A",
+      "scenario": "RUN_NORMAL",
+      "scenario_desc": "Carsem_3X3 정상 양산. 96.2% 수율 유지.",
+      "mock_sequence": [
+        "01_heartbeat",
+        "02_status_run",
+        "04_inspection_pass",
+        "09_lot_end_normal",
+        "23_oracle_normal"
+      ],
+      "tile_color_hint": "GREEN"
+    },
+    {
+      "equipment_id": "DS-VIS-002",
+      "display_name": "비전 #2 (Teaching 미완성)",
+      "site": "Carsem-A",
+      "scenario": "RUN_DEGRADED",
+      "scenario_desc": "Carsem_4X6 신규 레시피 투입 직후 SIDE ET=52 폭주. WARNING 알람 발행.",
+      "mock_sequence": [
+        "01_heartbeat",
+        "02_status_run",
+        "19_recipe_changed_new_4x6",
+        "05_inspection_fail_side_et52",
+        "15_alarm_side_vision_fail",
+        "24_oracle_warning"
+      ],
+      "tile_color_hint": "YELLOW"
+    },
+    {
+      "equipment_id": "DS-VIS-003",
+      "display_name": "비전 #3 (대기)",
+      "site": "Carsem-A",
+      "scenario": "IDLE",
+      "scenario_desc": "직전 LOT 정상 완료 후 IDLE 상태. 다음 LOT 투입 대기.",
+      "mock_sequence": [
+        "01_heartbeat",
+        "03_status_idle"
+      ],
+      "tile_color_hint": "GRAY"
+    },
+    {
+      "equipment_id": "DS-VIS-004",
+      "display_name": "비전 #4 (정지)",
+      "site": "Carsem-A",
+      "scenario": "STOP_CRITICAL",
+      "scenario_desc": "CAM_TIMEOUT_ERR 발생으로 STOP. CRITICAL 알람 + Will 메시지 시뮬레이션.",
+      "mock_sequence": [
+        "11_alarm_cam_timeout",
+        "17_alarm_eap_disconnected"
+      ],
+      "tile_color_hint": "RED"
+    }
+  ],
+  "validation_criteria": {
+    "expected_topic_count": 4,
+    "expected_simultaneous_tiles": 4,
+    "expected_alarm_levels": ["CRITICAL", "WARNING", "INFO"],
+    "expected_status_distribution": {
+      "RUN": 2,
+      "IDLE": 1,
+      "STOP": 1
+    }
+  }
+}

@@ -1,6 +1,7 @@
 {
   "_source": "info.log [LOT] LOT Start 16:17:10 확인 | Recipe: Carsem_3X3 직접 추출",
   "_uptime": "lifecycle.log OnStartup → 경과 초 추정",
+  "_v34_note": "v3.4 진행률 3필드 추가 — Carsem_3X3 LOT 실측 기반 (1,247/2,792, 수율 95.8%는 LOT 중간 시점 추정값)",
   "message_id": "f31b70a2-9dd6-4988-a281-68f0d15c16f6",
   "event_type": "STATUS_UPDATE",
   "timestamp": "2026-01-22T16:41:41.000Z",
@@ -10,5 +11,8 @@
   "recipe_id": "Carsem_3X3",
   "recipe_version": "v1.0",
   "operator_id": "ENG-KIM",
-  "uptime_sec": 1528
+  "uptime_sec": 1528,
+  "current_unit_count": 1247,
+  "expected_total_units": 2792,
+  "current_yield_pct": 95.8
 }

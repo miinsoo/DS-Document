@@ -1,0 +1,14 @@
+{
+  "_source": "CONTROL_CMD §8.2 ALARM_ACK + burst_id 그룹 ACK — v3.4",
+  "_synthetic": true,
+  "_note": "16번 AggregateException 41건 burst를 한 번에 ACK. EAP는 동일 burst_id 그룹의 모든 retained alarm을 clear (§6.6.2).",
+  "message_id": "7f3a1200-ctrl-4abc-b100-000000000027",
+  "event_type": "CONTROL_CMD",
+  "timestamp": "2026-01-26T11:15:00.000Z",
+  "equipment_id": "DS-VIS-001",
+  "command": "ALARM_ACK",
+  "issued_by": "MOBILE_APP",
+  "reason": "Operator acknowledged AggregateException burst (41 alarms)",
+  "target_lot_id": null,
+  "target_burst_id": "8d9e1f2a-aggex-4abc-b100-000000000001"
+}

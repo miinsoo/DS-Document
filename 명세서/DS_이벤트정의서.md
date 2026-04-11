@@ -499,3 +499,5 @@ LOT_END → Oracle 서버 Subscribe
 | 23_oracle_normal | ORACLE_ANALYSIS | §9 | NORMAL / Carsem_3X3 / 96.2% / 28 LOT |
 | 24_oracle_warning | ORACLE_ANALYSIS | §9 | WARNING / Carsem_4X6 / 68.5% / 8 LOT |
 | 25_oracle_danger | ORACLE_ANALYSIS | §9 | DANGER / Carsem_4X6 / 58.3% / 12 LOT |
+| 26_control_alarm_ack | CONTROL_CMD | §8 | ALARM_ACK / MOBILE_APP / 단독 알람 dismiss (v3.4 신규) |
+| 27_control_alarm_ack_burst | CONTROL_CMD | §8 | ALARM_ACK / target_burst_id / AggregateException 41건 그룹 dismiss (v3.4 신규) |

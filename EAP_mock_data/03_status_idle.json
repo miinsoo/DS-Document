@@ -1,5 +1,6 @@
 {
   "_source": "info.log [LOT] LOT End 17:39:13 이후 IDLE 전환",
+  "_v34_note": "v3.4 진행률 3필드 추가 — IDLE 상태이므로 마지막 LOT 종료값 사용 (2,792/2,792, 수율 96.2% 실측)",
   "message_id": "05d3415c-7cd1-4ae4-bf6a-5f8ecfdefdcf",
   "event_type": "STATUS_UPDATE",
   "timestamp": "2026-01-22T17:39:13.000Z",
@@ -9,5 +10,8 @@
   "recipe_id": "Carsem_3X3",
   "recipe_version": "v1.0",
   "operator_id": "ENG-KIM",
-  "uptime_sec": 6420
+  "uptime_sec": 6420,
+  "current_unit_count": 2792,
+  "expected_total_units": 2792,
+  "current_yield_pct": 96.2
 }

@@ -1,0 +1,14 @@
+{
+  "_source": "CONTROL_CMD §8.2 ALARM_ACK 신규 명령 — v3.4",
+  "_synthetic": true,
+  "_note": "모바일 앱이 11번 CAM_TIMEOUT_ERR 알람을 ACK하는 시나리오. EAP는 이 명령 수신 후 ds/DS-VIS-001/alarm 토픽에 빈 페이로드+Retain=true 발행하여 retained clear (§6.6).",
+  "message_id": "7f3a1200-ctrl-4abc-b100-000000000026",
+  "event_type": "CONTROL_CMD",
+  "timestamp": "2026-01-23T13:30:00.000Z",
+  "equipment_id": "DS-VIS-001",
+  "command": "ALARM_ACK",
+  "issued_by": "MOBILE_APP",
+  "reason": "Operator acknowledged CAM_TIMEOUT_ERR alarm",
+  "target_lot_id": null,
+  "target_burst_id": null
+}
