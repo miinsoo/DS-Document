@@ -1,7 +1,8 @@
 {
-  "_purpose": "N=4 동시 시나리오 — 모바일 N:1 타일 대시보드 검증용",
+  "_purpose": "N=4 동시 시나리오 — 모바일 N:1 타일 대시보드 + 가동률/추천/콘솔제어 검증용",
   "_synthetic": true,
-  "_note": "기존 Mock 01~25를 equipment_id만 치환하여 4 토픽 트리에 동시 발행. 시뮬레이터가 이 파일을 읽어 routing.",
+  "_note": "기존 Mock 01~25를 equipment_id만 치환하여 4 토픽 트리에 동시 발행. 시뮬레이터(ScenarioRunner)는 scenario enum으로 Drive 메서드를 구동하며, mock_sequence/scenario_desc/validation_criteria는 검증 기준(문서)이다.",
+  "_v_current_note": "현재 버전 반영: (1) STOP_CRITICAL(004)은 양산 중 중단이므로 LOT_END(ABORTED) 발행 후 STOP. (2) dispatcher가 모든 장비 status_updates를 equipment_status_log에 적재 → 가동률/R·I·D/현재가동은 LOT 완료 여부와 무관하게 4대 모두 반영. (3) MES가 자동감지(R23 수율/R25 불균형/개입필요 알람)를 ds/{eq}/recommendation로 발행(모바일 표시), 제어(처분)는 MES 콘솔(stdin)에서만.",
   "scenario_id": "MULTI-4X-001",
   "scenario_name": "4대 장비 동시 운영 — 정상/이상/대기/STOP 혼합",
   "duration_sec": 600,
@@ -12,7 +13,7 @@
       "display_name": "비전 #1 (정상 양산)",
       "site": "Carsem-A",
       "scenario": "RUN_NORMAL",
-      "scenario_desc": "Carsem_3X3 정상 양산. 96.2% 수율 유지.",
+      "scenario_desc": "Carsem_3X3 정상 양산. LOT_END(COMPLETED) 96.2% 수율. 검사 FAIL이 섞여도 LOT은 정상 완주. 대시보드 생산/수율의 주 소스.",
       "mock_sequence": [
         "01_heartbeat",
         "02_status_run",
@@ -27,7 +28,7 @@
       "display_name": "비전 #2 (Teaching 미완성)",
       "site": "Carsem-A",
       "scenario": "RUN_DEGRADED",
-      "scenario_desc": "Carsem_4X6 신규 레시피 투입 직후 SIDE ET=52 폭주. WARNING 알람 발행.",
+      "scenario_desc": "Carsem_4X6 신규 레시피 투입 직후 SIDE ET=52 폭주. WARNING 알람(VISION_SCORE_ERR, requires_manual_intervention=true) → LOT는 끝나지 않고 RUN 유지. MES가 추천(권고: RECIPE_LOAD 재티칭 / LOT_ABORT) 발행 → 운영자가 MES 콘솔에서 처분 전까지 RUN/WARNING 유지.",
       "mock_sequence": [
         "01_heartbeat",
         "02_status_run",
@@ -43,7 +44,7 @@
       "display_name": "비전 #3 (대기)",
       "site": "Carsem-A",
       "scenario": "IDLE",
-      "scenario_desc": "직전 LOT 정상 완료 후 IDLE 상태. 다음 LOT 투입 대기.",
+      "scenario_desc": "직전 LOT 정상 완료 후 IDLE 상태. LOT을 시작하지 않으므로 lot_end 없음(정상). 가동률/현재가동에는 equipment_status_log(상태 피드) 기준 IDLE로 반영됨.",
       "mock_sequence": [
         "01_heartbeat",
         "03_status_idle"
@@ -55,8 +56,12 @@
       "display_name": "비전 #4 (정지)",
       "site": "Carsem-A",
       "scenario": "STOP_CRITICAL",
-      "scenario_desc": "CAM_TIMEOUT_ERR 발생으로 STOP. CRITICAL 알람 + Will 메시지 시뮬레이션.",
+      "scenario_desc": "양산 중 CAM_TIMEOUT_ERR(CRITICAL) 발생 → LOT_END(ABORTED) 발행 후 STOP. CRITICAL 알람 + Will(EAP_DISCONNECTED). MES가 추천(권고: ALARM_CLEAR / EMERGENCY_STOP) 발행. 검사 unit FAIL과 별개로 끝난 LOT은 ABORTED로 집계.",
       "mock_sequence": [
+        "01_heartbeat",
+        "02_status_run",
+        "07_inspection_fail_prs_offset",
+        "10_lot_end_aborted",
         "11_alarm_cam_timeout",
         "17_alarm_eap_disconnected"
       ],
@@ -71,6 +76,18 @@
       "RUN": 2,
       "IDLE": 1,
       "STOP": 1
-    }
+    },
+    "expected_lot_end": {
+      "DS-VIS-001": "COMPLETED",
+      "DS-VIS-004": "ABORTED",
+      "_note": "002(RUN 유지)·003(LOT 미시작)은 lot_end 없음"
+    },
+    "expected_dashboard_equipment_count": 4,
+    "_dashboard_note": "현재 가동/R·I·D/가동률은 equipment_status_log 기준이라 4대 모두 집계. 장비 개별 수율/생산 목록도 상태 피드 기준으로 4대 노출(LOT 없는 장비는 생산 0).",
+    "expected_recommendations": [
+      { "equipment_id": "DS-VIS-002", "rule": "ALARM", "severity": "WARNING", "suggested_actions_any_of": ["RECIPE_LOAD", "LOT_ABORT"] },
+      { "equipment_id": "DS-VIS-004", "rule": "ALARM", "severity": "CRITICAL", "suggested_actions_any_of": ["ALARM_CLEAR", "EMERGENCY_STOP"] }
+    ],
+    "_recommendation_note": "추천은 ds/{eq}/recommendation(QoS1, retained)로 발행되어 모바일이 표시만 한다. 처분(제어)은 MES 콘솔에서만."
   }
 }
