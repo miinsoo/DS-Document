@@ -1,0 +1,44 @@
+{
+  "scenario_id": "ABNORMAL-4X-001",
+  "scenario_name": "비정상 시나리오 4종 검증 — 디스크포화/조명열화/LOT누락/burst크래시",
+  "duration_sec": 60,
+  "concurrent_alarms": true,
+  "equipments": [
+    {
+      "equipment_id": "DS-VIS-001",
+      "display_name": "비전 #1 (디스크 포화)",
+      "site": "Carsem-A",
+      "scenario": "DISK_FULL",
+      "scenario_desc": "HALCON #3142 WRITE_FAIL. 디스크 포화로 이미지 저장 실패 → STOP.",
+      "mock_sequence": ["04_inspection_pass", "12_alarm_write_image_fail"],
+      "tile_color_hint": "RED"
+    },
+    {
+      "equipment_id": "DS-VIS-002",
+      "display_name": "비전 #2 (조명 열화)",
+      "site": "Carsem-A",
+      "scenario": "LIGHT_DEGRADE",
+      "scenario_desc": "LIGHT_PWR_LOW 자동 복구 시도 후 SIDE Pass율 점진 하락.",
+      "mock_sequence": ["04_inspection_pass", "14_alarm_light_param_err", "06_inspection_fail_side_et12"],
+      "tile_color_hint": "YELLOW"
+    },
+    {
+      "equipment_id": "DS-VIS-003",
+      "display_name": "비전 #3 (LOT_END 누락)",
+      "site": "Carsem-A",
+      "scenario": "LOT_MISSING",
+      "scenario_desc": "AggregateException으로 LOT_END 미발행. 24,000s 초과 알람.",
+      "mock_sequence": ["04_inspection_pass", "16_alarm_lot_start_fail", "25_oracle_danger"],
+      "tile_color_hint": "RED"
+    },
+    {
+      "equipment_id": "DS-VIS-004",
+      "display_name": "비전 #4 (EAP 크래시 burst)",
+      "site": "Carsem-A",
+      "scenario": "EAP_CRASH_BURST",
+      "scenario_desc": "AggregateException 41건 burst → Heartbeat 중단 → EAP_DISCONNECTED.",
+      "mock_sequence": ["16_alarm_lot_start_fail", "17_alarm_eap_disconnected"],
+      "tile_color_hint": "RED"
+    }
+  ]
+}
